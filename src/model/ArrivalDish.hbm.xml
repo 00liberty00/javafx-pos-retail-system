@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.01.2017 17:00:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ml.model.ArrivalDish" table="arrivaldish" catalog="default_db" optimistic-lock="version">
+        <id name="idArrivalDish" type="java.lang.Long">
+            <column name="id_arrivaldish" />
+            <generator class="identity" />
+        </id>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" not-null="true" />
+        </property>
+        <property name="sumInvoice" type="big_decimal">
+            <column name="sumInvoice" precision="9" not-null="true" />
+        </property>
+        <property name="numberWaybill" type="string">
+            <column name="number_waybill" length="100" />
+        </property>
+        <property name="note" type="string">
+            <column name="note" length="500" />
+        </property>
+        <many-to-one name="userSwing" class="ml.model.UserSwing" fetch="select">
+            <column name="id_user" not-null="true" />
+        </many-to-one>
+        <set name="arrivalDishLists" table="arrivaldishlist" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_arrivaldish" not-null="true" />
+            </key>
+            <one-to-many class="ml.model.ArrivalDishList" />
+        </set>
+        <set name="caseRecord" table="case_record" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_case" not-null="true" />
+            </key>
+            <one-to-many class="ml.model.CaseRecord" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.01.2017 17:00:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ml.model.Accounting" table="accounting" catalog="default_db" optimistic-lock="version">
+    
+        <id name="idAccounting" type="java.lang.Integer">
+            <column name="id_accounting" />
+            <generator class="identity" />
+        </id>
+        <property name="firstSumGoods" type="big_decimal">
+            <column name="firstSumGoods" precision="9" />
+        </property>
+        <property name="lastSumGoods" type="big_decimal">
+            <column name="lastSumGoods" precision="9" />
+        </property>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" not-null="true" />
+        </property>
+        <property name="freeMoney" type="big_decimal">
+            <column name="freeMoney" precision="9" />
+        </property>
+        <property name="differenceFromSumGoods" type="big_decimal">
+            <column name="differenceFromSumGoods" precision="9" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.01.2017 17:00:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ml.model.Trial" table="trial" catalog="default_db" optimistic-lock="version">
+        <id name="idTrial" type="java.lang.Integer">
+            <column name="id_trial" />
+            <generator class="identity" />
+        </id>
+        <property name="firstdate" type="timestamp">
+            <column name="firstdate" length="19" not-null="true" />
+        </property>
+        <property name="lastdate" type="timestamp">
+            <column name="lastdate" length="19" not-null="true" />
+        </property>
+        <property name="created" type="boolean">
+            <column name="created" not-null="true" />
+        </property>
+        <property name="license" type="string">
+            <column name="license" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

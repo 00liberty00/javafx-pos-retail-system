@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.01.2017 17:00:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ml.model.Dish" table="dish" catalog="default_db" optimistic-lock="version">
+        <id name="idDish" type="java.lang.Long">
+            <column name="id_dish" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="1000" not-null="true" />
+        </property>
+        <property name="code" type="string">
+            <column name="code" length="50" not-null="true" />
+        </property>
+        <property name="weight" type="big_decimal">
+            <column name="weight" precision="7" scale="3" />
+        </property>
+        <property name="priceOpt" type="big_decimal">
+            <column name="priceOpt" precision="9" scale="2" />
+        </property>
+        <many-to-one name="categoryDish" class="ml.model.CategoryDish" fetch="select">
+            <column name="id_categorydish"/>
+        </many-to-one>
+        <set name="arrivalDishLists" table="arrivaldishlist" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_dish" not-null="true" />
+            </key>
+            <one-to-many class="ml.model.ArrivalDishList" />
+        </set>
+    </class>
+</hibernate-mapping>

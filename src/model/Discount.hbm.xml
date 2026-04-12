@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.01.2017 17:00:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ml.model.Discount" table="discount" catalog="default_db" optimistic-lock="version">
+        <id name="idDiscount" type="java.lang.Integer">
+            <column name="id_discount" />
+            <generator class="identity" />
+        </id>
+        <property name="numcard" type="string">
+            <column name="numcard" length="50" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="50" />
+        </property>
+        <property name="lastname" type="string">
+            <column name="lastname" length="50" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="50" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" />
+        </property>
+        <property name="dateRegister" type="timestamp">
+            <column name="date_register" length="19" not-null="true" />
+        </property>
+        <property name="dateUsed" type="timestamp">
+            <column name="date_used" length="19" not-null="true" />
+        </property>
+        <property name="percent" type="string">
+            <column name="percent" length="50" />
+        </property>
+        <property name="note" type="string">
+            <column name="note" length="1000" />
+        </property>
+        <property name="sumChecks" type="big_decimal">
+            <column name="sum_checks" precision="9" />
+        </property>
+        <property name="classId" type="string">
+            <column name="classId" length="500" />
+        </property>
+        <property name="objectId" type="string">
+            <column name="objectId" length="500" />
+        </property>
+        <property name="telegramIdChat" type="long">
+            <column name="telegram_id_chat"/>
+        </property>
+        <set name="checkDiscounts" table="check_discount" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_discount" />
+            </key>
+            <one-to-many class="ml.model.CheckDiscount" />
+        </set>
+    </class>
+</hibernate-mapping>

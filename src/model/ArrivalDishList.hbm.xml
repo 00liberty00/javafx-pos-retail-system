@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.01.2017 17:00:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ml.model.ArrivalDishList" table="arrivaldishlist" catalog="default_db" optimistic-lock="version">
+        <id name="idArrivalDishList" type="java.lang.Long">
+            <column name="id_arrivaldishList" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="arrivalDish" class="ml.model.ArrivalDish" fetch="select">
+            <column name="id_arrivaldish" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dish" class="ml.model.Dish" fetch="select">
+            <column name="id_dish" not-null="true" />
+        </many-to-one>
+        <property name="amount" type="big_decimal">
+            <column name="amount" precision="7" scale="3"  />
+        </property>
+        <property name="priceOpt" type="big_decimal">
+            <column name="priceOpt" precision="7" scale="2" />
+        </property>
+    </class>
+</hibernate-mapping>

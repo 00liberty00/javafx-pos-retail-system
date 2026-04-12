@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.01.2017 17:00:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ml.model.Goods" table="goods" catalog="default_db" optimistic-lock="version">
+        <id name="idGoods" type="java.lang.Long">
+            <column name="id_goods" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categoryGoods" class="ml.model.CategoryGoods" fetch="select">
+            <column name="id_categoryGoods" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="500" not-null="true" />
+        </property>
+        <property name="code" type="string">
+            <column name="code" length="50" not-null="true" />
+        </property>
+        <property name="residue" type="big_decimal">
+            <column name="residue" precision="7" scale="3" />
+        </property>
+        <property name="price" type="big_decimal">
+            <column name="price" precision="9" />
+        </property>
+        <property name="priceOpt" type="big_decimal">
+            <column name="price_opt" precision="9" />
+        </property>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" />
+        </property>
+        <property name="marking" type="java.lang.Boolean">
+            <column name="marking" />
+        </property>
+        <set name="writeoffLists" table="writeoffList" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_goods" not-null="true" />
+            </key>
+            <one-to-many class="ml.model.WriteoffList" />
+        </set>
+        <set name="goodsAccountings" table="goodsAccounting" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_goods" not-null="true" />
+            </key>
+            <one-to-many class="ml.model.GoodsAccounting" />
+        </set>
+        <set name="arrivalLists" table="arrivalList" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_goods" not-null="true" />
+            </key>
+            <one-to-many class="ml.model.ArrivalList" />
+        </set>
+        <set name="checkLists" table="checkList" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_goods" not-null="true" />
+            </key>
+            <one-to-many class="ml.model.CheckList" />
+        </set>
+        <set name="barcodes" table="barcode" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_goods" not-null="true" />
+            </key>
+            <one-to-many class="ml.model.Barcode" />
+        </set>
+        <set name="reportsAccountings" table="reportsAccounting" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_goods" not-null="true" />
+            </key>
+            <one-to-many class="ml.model.ReportsAccounting" />
+        </set>
+        <set name="favorite" table="favorite" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_goods" not-null="true" />
+            </key>
+            <one-to-many class="ml.model.Favorite" />
+        </set>
+         
+    </class>
+</hibernate-mapping>

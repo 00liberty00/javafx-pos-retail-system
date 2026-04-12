@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.01.2017 17:00:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ml.model.GoodsAccounting" table="goodsaccounting" catalog="default_db" optimistic-lock="version">
+        <id name="idGoodsAccounting" type="java.lang.Long">
+            <column name="id_goodsAccounting" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="goods" class="ml.model.Goods" fetch="select">
+            <column name="id_goods" not-null="true" />
+        </many-to-one>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" />
+        </property>
+        <property name="checkin" type="java.lang.Boolean">
+            <column name="checkin" />
+        </property>
+        <property name="residueNew" type="big_decimal">
+            <column name="residue_new" precision="7" scale="3" />
+        </property>
+        <property name="residueDiff" type="big_decimal">
+            <column name="residue_diff" precision="7" scale="3" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.01.2017 17:00:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ml.model.CheckDiscount" table="check_discount" catalog="default_db" optimistic-lock="version">
+        <id name="idCheck" type="int">
+            <column name="id_check" />
+            <generator class="foreign">
+                <param name="property">check</param>
+            </generator>
+        </id>
+        <one-to-one name="check" class="ml.model.Check" constrained="true"></one-to-one>
+        <many-to-one name="discount" class="ml.model.Discount" fetch="select">
+            <column name="id_discount" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

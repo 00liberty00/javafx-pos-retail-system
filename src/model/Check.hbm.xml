@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.01.2017 17:00:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ml.model.Check" table="check" catalog="default_db" optimistic-lock="version">
+        <id name="idCheck" type="java.lang.Integer">
+            <column name="id_check" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="userSwing" class="ml.model.UserSwing" fetch="select">
+            <column name="id_user" not-null="true" />
+        </many-to-one>
+        <property name="sum" type="big_decimal">
+            <column name="sum" precision="9" />
+        </property>
+        <property name="nal" type="big_decimal">
+            <column name="nal" precision="9" />
+        </property>
+        <property name="bnal" type="big_decimal">
+            <column name="bnal" precision="9" />
+        </property>
+        <property name="money" type="big_decimal">
+            <column name="money" precision="9" />
+        </property>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" />
+        </property>
+        <property name="bank" type="java.lang.Boolean">
+            <column name="bank" />
+        </property>
+        <property name="note" type="string">
+            <column name="note" length="500" />
+        </property>
+        <one-to-one name="checkDiscount" class="ml.model.CheckDiscount"></one-to-one>
+        <set name="checkLists" table="checkList" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_check" not-null="true" />
+            </key>
+            <one-to-many class="ml.model.CheckList" />
+        </set>
+    </class>
+</hibernate-mapping>

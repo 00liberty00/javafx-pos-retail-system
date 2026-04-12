@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.01.2017 17:00:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ml.model.CashOut" table="cash_out" catalog="default_db" optimistic-lock="version">
+        <id name="idCashOut" type="java.lang.Integer">
+            <column name="id_cashOut" />
+            <generator class="identity" />
+        </id>
+        <property name="sumCash" type="big_decimal">
+            <column name="sum_cash" precision="9" not-null="true" />
+        </property>
+        <property name="note" type="string">
+            <column name="note" length="500" />
+        </property>
+        <set name="caseRecord" table="case_record" inverse="true" cascade="delete" lazy="true" fetch="select">
+            <key>
+                <column name="id_cashOut" not-null="true" />
+            </key>
+            <one-to-many class="ml.model.CaseRecord" />
+        </set>
+    </class>
+</hibernate-mapping>

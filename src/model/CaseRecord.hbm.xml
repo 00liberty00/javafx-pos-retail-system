@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.01.2017 17:00:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ml.model.CaseRecord" table="case_record" catalog="default_db" optimistic-lock="version">
+        <id name="idCase" type="java.lang.Long">
+            <column name="id_case" />
+            <generator class="identity" />
+        </id>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" not-null="true" />
+        </property>
+        <property name="cashMustBe" type="big_decimal">
+            <column name="cashMustBe" precision="9" />
+        </property>
+        <many-to-one name="cashIn" class="ml.model.CashIn" fetch="select">
+            <column name="id_cashIn" />
+        </many-to-one>
+        <many-to-one name="cashOut" class="ml.model.CashOut" fetch="select">
+            <column name="id_cashOut"/>
+        </many-to-one>
+        <many-to-one name="userSwing" class="ml.model.UserSwing" fetch="select">
+            <column name="id_user" not-null="true" />
+        </many-to-one>
+        <many-to-one name="writeOff" class="ml.model.Writeoff" fetch="select">
+            <column name="id_writeoff"/>
+        </many-to-one>
+        <many-to-one name="arrival" class="ml.model.Arrival" fetch="select">
+            <column name="id_arrival"/>
+        </many-to-one>
+        <many-to-one name="arrivalDish" class="ml.model.ArrivalDish" fetch="select">
+            <column name="id_arrivaldish"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.01.2017 17:00:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ml.model.CheckList" table="checklist" catalog="default_db" optimistic-lock="version">
+        <id name="idCheckList" type="java.lang.Long">
+            <column name="id_checkList" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="check" class="ml.model.Check" fetch="select">
+            <column name="id_check" not-null="true" />
+        </many-to-one>
+        <many-to-one name="goods" class="ml.model.Goods" fetch="select">
+            <column name="id_goods" not-null="true" />
+        </many-to-one>
+        <property name="amount" type="big_decimal">
+            <column name="amount" precision="7" scale="3" not-null="true" />
+        </property>
+        <property name="price" type="big_decimal">
+            <column name="price" precision="7" scale="3" />
+        </property>
+        <property name="profit" type="big_decimal">
+            <column name="profit" precision="7" scale="3" not-null="true" />
+        </property>
+        <property name="newPrice" type="java.lang.Boolean">
+            <column name="new_price" />
+        </property>
+         <one-to-one name="checkListNewPrice" class="ml.model.CheckListNewPrice"></one-to-one>
+    </class>
+</hibernate-mapping>
