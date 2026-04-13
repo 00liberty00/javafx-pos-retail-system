@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "src/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--<property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>-->
+        <!--<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>-->
+        <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/marleo?useUnicode=true&amp;serverTimezone=Europe/Moscow&amp;useSSL=true&amp;verifyServerCertificate=false</property>-->
+        <!--<property name="hibernate.connection.username">root</property>-->
+        <property name="hibernate.connection.password">kFpXJeDCrCao0XFi7jZJhw==</property>
+        <!--<property name="hibernate.connection.password">77669988</property>-->
+        <!-- Disable the second-level cache -->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection_pool_size">true</property>
+        <!-- SQL dialect -->
+        <property name="hibernate.show_sql">true</property>
+        <!--  c3p0 -->
+        <property name="hibernate.c3p0.validate">true</property>
+        <property name="hibernate.connection.provider_class">org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider</property>
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.max_size">600</property>
+        <property name="hibernate.c3p0.timeout">1800</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+        <property name="hibernate.c3p0.preferredTestQuery">SELECT 1;</property>
+        <property name="hibernate.c3p0.testConnectionOnCheckout">true</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        
+        <mapping resource="ml/model/Accounting.hbm.xml"/>
+        <mapping resource="ml/model/CategoryFavorite.hbm.xml"/>
+        <mapping resource="ml/model/GoodsBackup.hbm.xml"/>
+        <mapping resource="ml/model/Discount.hbm.xml"/>
+        <mapping resource="ml/model/Goods.hbm.xml"/>
+        <mapping resource="ml/model/Arrival.hbm.xml"/>
+        <mapping resource="ml/model/UserSwing.hbm.xml"/>
+        <mapping resource="ml/model/UserRoles.hbm.xml"/>
+        <mapping resource="ml/model/WriteoffList.hbm.xml"/>
+        <mapping resource="ml/model/CheckDiscount.hbm.xml"/>
+        <mapping resource="ml/model/Total.hbm.xml"/>
+        <mapping resource="ml/model/Barcode.hbm.xml"/>
+        <mapping resource="ml/model/Trial.hbm.xml"/>
+        <mapping resource="ml/model/Check.hbm.xml"/>
+        <mapping resource="ml/model/Favorite.hbm.xml"/>
+        <mapping resource="ml/model/CategoryGoods.hbm.xml"/>
+        <mapping resource="ml/model/CheckList.hbm.xml"/>
+        <mapping resource="ml/model/Writeoff.hbm.xml"/>
+        <mapping resource="ml/model/CashIn.hbm.xml"/>
+        <mapping resource="ml/model/CashOut.hbm.xml"/>
+        <mapping resource="ml/model/ReportsAccounting.hbm.xml"/>
+        <mapping resource="ml/model/Orders.hbm.xml"/>
+        <mapping resource="ml/model/ArrivalList.hbm.xml"/>
+        <mapping resource="ml/model/CaseRecord.hbm.xml"/>
+        <mapping resource="ml/model/GoodsAccounting.hbm.xml"/>
+        <mapping resource="ml/model/CheckListNewPrice.hbm.xml"/>
+        <mapping resource="ml/model/TechMap.hbm.xml"/>
+        <mapping resource="ml/model/Dish.hbm.xml"/>
+        <mapping resource="ml/model/CategoryDish.hbm.xml"/>
+        <mapping resource="ml/model/ArrivalDish.hbm.xml"/>
+        <mapping resource="ml/model/ArrivalDishList.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>
